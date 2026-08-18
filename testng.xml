@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test" enabled="true">
+  	<classes>
+    <class name="Creation.Youtube">
+      <methods>
+        <include name="navigate">
+        <parameter name="casename"  value="Navigate the website"/>
+         </include>
+        <!--include name="playvideo">
+        <parameter name="casename"  value="Play the video"/>
+         </include-->
+      </methods>
+    </class>
+  </classes>
+  
+  
+  </test> <!-- Test -->
+  
+  
+   <test thread-count="5" name="Test" enabled="false">
+  	<classes>
+    <class name="Creation.Youtube">
+      <methods>
+        <include name="windowhandling">
+        <parameter name="casename"  value="Window handling"/>
+         </include>
+      </methods>
+    </class>
+  </classes>
+  
+  
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
