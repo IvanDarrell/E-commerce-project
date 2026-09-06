@@ -46,7 +46,15 @@ jobs:
       - name: Import ecommerce database
         run: |
           mysql -h 127.0.0.1 -P 3306 -u root -proot ecommerce < ecommerce.sql    
-
+      - name: Debug Maven environment
+        run: |
+          java -version
+          mvn -version
+          echo "=== Lombok dependency ==="
+          mvn dependency:tree -Dincludes=org.projectlombok:lombok
+          echo "=== Effective POM ==="
+          mvn help:effective-pom -Doutput=effective-pom.xml
+          grep -i -C 5 lombok effective-pom.xml || true
       - name: Run TestNG suite
         env:
           DB_URL: jdbc:mysql://127.0.0.1:3306/ecommerce
