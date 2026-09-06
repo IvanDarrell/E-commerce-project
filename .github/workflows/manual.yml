@@ -14,8 +14,8 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: ecommerce
-          ports:
-            -3306:3306
+        ports:
+          - 3306:3306
           options: >-
             --health-cmd="mysqladmin ping -h localhost -uroot -proot"
             --health-interval=10s
@@ -49,7 +49,7 @@ jobs:
 
       - name: Run TestNG suite
         env:
-          DB_URL: mysql://127.0.0.1:3306/ecommerce
+          DB_URL: jdbc:mysql://127.0.0.1:3306/ecommerce
           DB_USERNAME: root
           DB_PASSWORD: root
         run: |
