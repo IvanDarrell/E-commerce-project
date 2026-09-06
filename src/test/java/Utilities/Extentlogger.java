@@ -52,7 +52,9 @@ public class Extentlogger {
 
         // Specify the location of the report
 		String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
-        ExtentSparkReporter spark = new ExtentSparkReporter("C:/Users/IVAN DARRELL/eclipse-workspace/E-commerce project/report/Regression " +  timeStamp + ".html");
+		 String reportPath = "target/report/Regression " + timeStamp + ".html";
+
+		ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
        
         spark.config().setTheme(Theme.DARK);
 
