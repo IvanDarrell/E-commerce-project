@@ -15,7 +15,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: ecommerce
         ports:
-          - 3306:3306
+          - "3306:3306"
           options: >-
             --health-cmd="mysqladmin ping -h localhost -uroot -proot"
             --health-interval=10s
