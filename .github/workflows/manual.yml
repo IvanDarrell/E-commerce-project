@@ -31,6 +31,18 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            if mysqladmin ping -h 127.0.0.1 -P 3306 -u root -proot --silent; then
+              echo "MySQL is ready"
+              break
+            fi
+
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
       - name: Import ecommerce database
         run: |
           mysql -h 127.0.0.1 -P 3306 -u root -proot ecommerce < ecommerce.sql    
