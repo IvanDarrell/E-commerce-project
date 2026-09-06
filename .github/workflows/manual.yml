@@ -1,0 +1,59 @@
+name: Selenium TestNG Tests
+
+
+on: 
+  workflow_dispatch:
+
+
+jobs:
+  selenium-test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: ecommerce
+          ports:
+            -3306:3306
+          options: >-
+            --health-cmd="mysqladmin ping -h localhost -uroot -proot"
+            --health-interval=10s
+            --health-timeout=5s
+            --health-retries=10
+    steps:  
+      - name : Checkout project
+        uses : actions/checkout@v4
+
+      - name : Setup Java
+        uses : actions/setup-java@v4
+        with: 
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Import ecommerce database
+        run: |
+          mysql -h 127.0.0.1 -P 3306 -u root -proot ecommerce < ecommerce.sql    
+
+      - name: Run TestNG suite
+        env:
+          DB_URL: mysql://127.0.0.1:3306/ecommerce
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: |
+          mvn clean test -Dsurefire.suiteXmlFiles=testNG.xml
+      - name: Upload Extent Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-report
+          path: target/report/
+
+
+      - - name: Upload TestNG Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: testng-report
+          path: target/surefire-reports/    
+          
