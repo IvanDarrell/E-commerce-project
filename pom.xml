@@ -54,11 +54,6 @@
         <version>8.4.0</version> <!-- Use the latest stable version -->
     </dependency>
 	
-   <dependency>
-   	<groupId>CRM</groupId>
-   	<artifactId>CRM</artifactId>
-   	<version>0.0.1-SNAPSHOT</version>
-   </dependency>
   </dependencies>
   
   <build>
