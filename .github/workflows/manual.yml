@@ -67,7 +67,7 @@ jobs:
           DB_USERNAME: root
           DB_PASSWORD: root
         run: |
-          mvn clean test -Dsurefire.suiteXmlFiles=testNG.xml
+          mvn clean test -Dsurefire.suiteXmlFiles=testng.xml
       - name: Upload Extent Report
         if: always()
         uses: actions/upload-artifact@v4
