@@ -5,10 +5,10 @@
     <classes>
       <class name="Creation.Youtube">
         <methods>
+          <include name="fluush"/>
+          <include name="adminlogin"/>
           <include name="logger"/>
           <include name="createtest"/>
-          <include name="windowhandling"/>
-          <include name="fluush"/>
         </methods>
       </class> <!-- Creation.Youtube -->
     </classes>

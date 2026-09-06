@@ -1,76 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="2" total="3" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-08-17T22:42:11 PST" name="Suite" finished-at="2026-08-17T22:42:14 PST" duration-ms="2276">
+  <suite started-at="2026-09-06T11:44:07 PST" name="Suite" finished-at="2026-09-06T11:44:41 PST" duration-ms="33980">
     <groups>
     </groups>
-    <test started-at="2026-08-17T22:42:11 PST" name="Test" finished-at="2026-08-17T22:42:14 PST" duration-ms="2276">
-      <class name="Creation.Youtube">
-        <test-method is-config="true" signature="logger()[pri:0, instance:Creation.Youtube@61f80d55]" started-at="2026-08-17T22:42:11 PST" name="logger" finished-at="2026-08-17T22:42:12 PST" duration-ms="128" status="PASS">
+    <test started-at="2026-09-06T11:44:07 PST" name="Test" finished-at="2026-09-06T11:44:41 PST" duration-ms="33980">
+      <class name="Creation.EcommerceTest">
+        <test-method is-config="true" signature="logger()[pri:0, instance:Creation.EcommerceTest@d23e042]" started-at="2026-09-06T11:44:07 PST" name="logger" finished-at="2026-09-06T11:44:08 PST" duration-ms="178" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logger -->
-        <test-method is-config="true" signature="createtest(java.lang.String)[pri:0, instance:Creation.Youtube@61f80d55]" started-at="2026-08-17T22:42:12 PST" name="createtest" finished-at="2026-08-17T22:42:12 PST" duration-ms="5" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Navigate the website]]>
-              </value>
-            </param>
-          </params>
+        <test-method is-config="true" signature="test()[pri:0, instance:Creation.EcommerceTest@d23e042]" started-at="2026-09-06T11:44:08 PST" name="test" finished-at="2026-09-06T11:44:09 PST" duration-ms="1391" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createtest -->
-        <test-method signature="navigate()[pri:0, instance:Creation.Youtube@61f80d55]" started-at="2026-08-17T22:42:12 PST" name="navigate" finished-at="2026-08-17T22:42:13 PST" duration-ms="1865" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Your failure message here]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Your failure message here
-at org.testng.Assert.fail(Assert.java:111)
-at Utilities.Actionspage.verifycurrentURL(Actionspage.java:341)
-at Creation.Youtube.navigate(Youtube.java:89)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-at org.testng.TestRunner.privateRun(TestRunner.java:744)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        </test-method> <!-- test -->
+        <test-method signature="usertest()[pri:0, instance:Creation.EcommerceTest@d23e042]" started-at="2026-09-06T11:44:09 PST" name="usertest" finished-at="2026-09-06T11:44:41 PST" duration-ms="32175" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- navigate -->
-        <test-method is-config="true" signature="fluush()[pri:0, instance:Creation.Youtube@61f80d55]" started-at="2026-08-17T22:42:13 PST" name="fluush" finished-at="2026-08-17T22:42:14 PST" duration-ms="252" status="PASS">
+        </test-method> <!-- usertest -->
+        <test-method is-config="true" signature="flush()[pri:0, instance:Creation.EcommerceTest@d23e042]" started-at="2026-09-06T11:44:41 PST" name="flush" finished-at="2026-09-06T11:44:41 PST" duration-ms="207" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- fluush -->
-      </class> <!-- Creation.Youtube -->
+        </test-method> <!-- flush -->
+      </class> <!-- Creation.EcommerceTest -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

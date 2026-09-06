@@ -5,23 +5,30 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+
+import Creation.Main;
 
 public class Browsers {
 
 	
-	public static String browser;
 	
-	public static WebDriver driver;
+	private static WebDriver driver;
 	
 	
+	
+	/*
 	public Browsers (String browser) {
 		
 		Browsers.driver = set(browser);
+	
 	}
+	*/
 	
-	
-	
-	public WebDriver set (String browser) {
+
+	public static WebDriver set (String browser) {
 		
 		
 		if (browser.equals("chrome")) {
@@ -54,6 +61,13 @@ public class Browsers {
 		
 	}
 	
+	public void getdriver () {
+		
+		System.out.print(driver);
+		
+		
+	}
+	
 	public void  startbrowser (String url) {
 		
 			 driver.get(url);
@@ -64,7 +78,6 @@ public class Browsers {
 	
 	
 
-		
 	
 	
 }

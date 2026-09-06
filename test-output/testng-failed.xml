@@ -3,16 +3,14 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Creation.Youtube">
+      <class name="Creation.EcommerceTest">
         <methods>
-          <include name="fluush"/>
-          <include name="navigate">
-            <parameter name="casename" value="Navigate the website"/>
-          </include> <!-- navigate -->
           <include name="logger"/>
-          <include name="createtest"/>
+          <include name="usertest"/>
+          <include name="test"/>
+          <include name="flush"/>
         </methods>
-      </class> <!-- Creation.Youtube -->
+      </class> <!-- Creation.EcommerceTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

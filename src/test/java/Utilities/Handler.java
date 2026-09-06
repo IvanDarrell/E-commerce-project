@@ -9,10 +9,21 @@ import Creation.Main;
 
 public class Handler {
 
-	WebDriver driver = Browsers.driver;
-	Extentlogger log = Main.log;	
+	private WebDriver driver;
+	private Extentlogger log;
 	
-	String currentWindow = driver.getWindowHandle();
+	public Handler(WebDriver driver, Extentlogger log) {
+		
+		this.driver = driver;
+        this.log = log;	
+	  
+		
+
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	String currentWindow;
 	
 	
 	
@@ -116,6 +127,12 @@ public class Handler {
 		
 		
 		
+	}
+	
+	public String getcurrentwindow () {
+		
+		
+		return driver.getWindowHandle();
 	}
 	
 	

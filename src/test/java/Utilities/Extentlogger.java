@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -24,6 +25,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
+import Creation.Main;
 
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -31,21 +33,26 @@ import org.testng.ITestResult;
 
 public class Extentlogger {
 	
-	
+	 private WebDriver driver;
+
+	    public Extentlogger(WebDriver driver) {
+	        this.driver = driver;
+	    }
 	
 	static public ExtentReports report;
 	static public ExtentTest scenario;
 	
 	
-	WebDriver driver = Browsers.driver;
 	
 	static public String casename;
 	
+	
+
 	public static void  initializereport () {
 
         // Specify the location of the report
 		String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
-        ExtentSparkReporter spark = new ExtentSparkReporter("C:/Users/IVAN DARRELL/eclipse-workspace/MyCreation/report/Regression " +  timeStamp + ".html");
+        ExtentSparkReporter spark = new ExtentSparkReporter("C:/Users/IVAN DARRELL/eclipse-workspace/E-commerce project/report/Regression " +  timeStamp + ".html");
        
         spark.config().setTheme(Theme.DARK);
 
