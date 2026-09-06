@@ -29,7 +29,7 @@ public class Database {
         System.getenv().getOrDefault(
                 "DB_URL",
                 "jdbc:mysql://localhost:3306/automation"
-        )
+        );
 
  private static final String username =
             System.getenv().getOrDefault(
