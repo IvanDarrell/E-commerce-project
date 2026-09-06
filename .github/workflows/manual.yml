@@ -46,6 +46,12 @@ jobs:
       - name: Import ecommerce database
         run: |
           mysql -h 127.0.0.1 -P 3306 -u root -proot ecommerce < ecommerce.sql    
+
+      - name: Inspect Maven compiler
+        run: |
+          mvn help:effective-pom -Doutput=effective-pom.xml
+          grep -i -C 10 "maven-compiler-plugin" effective-pom.xml || true
+          grep -i -C 10 "lombok" effective-pom.xml || true
       - name: Debug Maven environment
         run: |
           java -version
