@@ -25,10 +25,20 @@ public class Database {
 	
 	
 	
-	static String dbUrl = "jdbc:mysql://localhost:3306/automation";
-	
-	static String username = "root";
-	static String password = "Megadeth13*";
+	private static final String dbUrl =
+        System.getenv().getOrDefault(
+                "DB_URL",
+                "jdbc:mysql://localhost:3306/automation"
+        )
+
+ private static final String username =
+            System.getenv().getOrDefault(
+                    "DB_USERNAME",
+                    "root"
+            );
+
+    private static final String password =
+            System.getenv("DB_PASSWORD");
 
 	public static String url = "";
 	
