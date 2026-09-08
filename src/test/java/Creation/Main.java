@@ -104,7 +104,7 @@ public class Main {
 		
 		log.report.flush();
 		
-		//driver.close();
+		driver.close();
 		
 	}
 	
