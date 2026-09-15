@@ -106,14 +106,7 @@ public class Main {
 
 	public void shutdownbrowser() {
 		
-<<<<<<< HEAD
 		driver.quit();
-=======
-		log.report.flush();
-		
-		driver.close();
-		
->>>>>>> branch 'master' of https://github.com/IvanDarrell/E-commerce-project.git
 	}
 	
 	
