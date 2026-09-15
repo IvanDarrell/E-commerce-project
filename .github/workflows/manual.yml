@@ -1,13 +1,12 @@
 name: Selenium TestNG Tests
 
-
-on: 
+on:
   workflow_dispatch:
-
 
 jobs:
   selenium-test:
     runs-on: ubuntu-latest
+
     services:
       mysql:
         image: mysql:8.0
@@ -21,17 +20,30 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=10
-    steps:  
+
+    steps:
+
+      # ==========================================
+      # 1. Checkout project
+      # ==========================================
       - name: Checkout project
         uses: actions/checkout@v4
 
+
+      # ==========================================
+      # 2. Setup Java
+      # ==========================================
       - name: Setup Java
         uses: actions/setup-java@v4
-        with: 
+        with:
           java-version: '11'
           distribution: 'temurin'
           cache: maven
 
+
+      # ==========================================
+      # 3. Wait for MySQL
+      # ==========================================
       - name: Wait for MySQL
         run: |
           for i in {1..30}; do
@@ -43,24 +55,59 @@ jobs:
             echo "Waiting for MySQL..."
             sleep 2
           done
+
+
+      # ==========================================
+      # 4. Import ecommerce database
+      # ==========================================
       - name: Import ecommerce database
         run: |
-          mysql -h 127.0.0.1 -P 3306 -u root -proot ecommerce < ecommerce.sql    
+          mysql -h 127.0.0.1 -P 3306 -u root -proot ecommerce < ecommerce.sql
 
-      - name: Inspect Maven compiler
+
+      # ==========================================
+      # 5. Start Selenium Grid
+      # ==========================================
+      - name: Start Selenium Grid
         run: |
-          mvn help:effective-pom -Doutput=effective-pom.xml
-          grep -i -C 10 "maven-compiler-plugin" effective-pom.xml || true
-          grep -i -C 10 "lombok" effective-pom.xml || true
-      - name: Debug Maven environment
+          docker compose up -d
+
+
+      # ==========================================
+      # 6. Check Selenium containers
+      # ==========================================
+      - name: Check Selenium Grid containers
         run: |
-          java -version
-          mvn -version
-          echo "=== Lombok dependency ==="
-          mvn dependency:tree -Dincludes=org.projectlombok:lombok
-          echo "=== Effective POM ==="
-          mvn help:effective-pom -Doutput=effective-pom.xml
-          grep -i -C 5 lombok effective-pom.xml || true
+          docker compose ps
+
+
+      # ==========================================
+      # 7. Wait for Selenium Grid
+      # ==========================================
+      - name: Wait for Selenium Grid
+        run: |
+          for i in {1..30}; do
+            if curl -fsS http://localhost:4444/status | grep -q '"ready":true'; then
+              echo "Selenium Grid is ready"
+              break
+            fi
+
+            echo "Waiting for Selenium Grid..."
+            sleep 2
+          done
+
+
+      # ==========================================
+      # 8. Show Grid status
+      # ==========================================
+      - name: Selenium Grid status
+        run: |
+          curl -s http://localhost:4444/status
+
+
+      # ==========================================
+      # 9. Run TestNG suite
+      # ==========================================
       - name: Run TestNG suite
         env:
           DB_URL: jdbc:mysql://127.0.0.1:3306/ecommerce
@@ -68,6 +115,11 @@ jobs:
           DB_PASSWORD: root
         run: |
           mvn clean test -Dsurefire.suiteXmlFiles=testng.xml
+
+
+      # ==========================================
+      # 10. Upload Extent Report
+      # ==========================================
       - name: Upload Extent Report
         if: always()
         uses: actions/upload-artifact@v4
@@ -76,10 +128,21 @@ jobs:
           path: target/report/
 
 
+      # ==========================================
+      # 11. Upload TestNG Report
+      # ==========================================
       - name: Upload TestNG Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: testng-report
-          path: target/surefire-reports/    
-          
+          path: target/surefire-reports/
+
+
+      # ==========================================
+      # 12. Stop Selenium Grid
+      # ==========================================
+      - name: Stop Selenium Grid
+        if: always()
+        run: |
+          docker compose down
