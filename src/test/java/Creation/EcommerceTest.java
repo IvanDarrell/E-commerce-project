@@ -41,7 +41,6 @@ import Utilities.Handler;
 import Utilities.Page;
 import Utilities.jsonReader;
 import io.reactivex.rxjava3.functions.Action;
-import jdk.internal.org.objectweb.asm.commons.Method;
 
 public class EcommerceTest extends Main{
 	
@@ -68,7 +67,6 @@ public class EcommerceTest extends Main{
 	public void usertest() throws IOException {
 		
 		SoftAssert softAssert = new SoftAssert();
-		Extentlogger.createTest("Userworkflow");
 		
 		try {
 			
@@ -175,7 +173,7 @@ public class EcommerceTest extends Main{
 		} catch (Exception e) {
 			
 			
-			log.scenario.fail("Failure to go through User workflow");
+			log.getScenario().fail("Failure to go through User workflow");
 			log.onTestFailure("Fail");
 			
 			fail("Your failure message here");	

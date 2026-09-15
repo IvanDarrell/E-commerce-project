@@ -1,6 +1,5 @@
 package Utilities;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -30,94 +29,111 @@ import Creation.Main;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-
 public class Extentlogger {
-	
-	 private WebDriver driver;
 
-	    public Extentlogger(WebDriver driver) {
-	        this.driver = driver;
-	    }
-	
-	static public ExtentReports report;
-	static public ExtentTest scenario;
-	
-	
-	
+	private WebDriver driver;
+
+	public Extentlogger(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	private static ThreadLocal<ExtentReports> report = new ThreadLocal<>();
+
+	// Each thread gets its own ExtentTest
+	private static ThreadLocal<ExtentTest> scenario = new ThreadLocal<>();
 	static public String casename;
-	
-	
 
-	public static void  initializereport () {
+	public static synchronized void initializereport(String testName) {
 
-        // Specify the location of the report
-		String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
-        ExtentSparkReporter spark = new ExtentSparkReporter("C:/Users/IVAN DARRELL/eclipse-workspace/E-commerce project/report/Regression " +  timeStamp + ".html");
-       
-        spark.config().setTheme(Theme.DARK);
+		String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss-SSS").format(new Date());
 
-        // Create ExtentReports instance
+		// Make the TestNG test name safe for a Windows filename
+		String safeTestName = testName.replaceAll("[\\\\/:*?\"<>|]", "_");
 
-        ExtentReports extent = new ExtentReports();
+		String reportPath = "C:/Users/IVAN DARRELL/eclipse-workspace/" + "E-commerce project/report/" + safeTestName
+				+ "_" + timeStamp + ".html";
 
-        // Attach reporter
+		ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
 
-        extent.attachReporter(spark);
-        
-        
-        Extentlogger.report = extent;
-        
-         
-        
-        
-        
-        
+		spark.config().setTheme(Theme.DARK);
+
+		ExtentReports extent = new ExtentReports();
+
+		extent.attachReporter(spark);
+
+		report.set(extent);
+
+		System.out.println("Extent Report Created: " + reportPath);
+
 	}
-	
-	
-	public static void createTest (String name) {
-		
-		
-		ExtentTest testcase = report.createTest(name);
 
-		Extentlogger.scenario = testcase;
-		
-		
-		
-		
-		
-		
+	public static void createTest(String name) {
+
+		ExtentReports extent = report.get();
+
+		if (extent == null) {
+			throw new IllegalStateException("ExtentReports has not been initialized for this thread.");
+		}
+
+		ExtentTest testcase = extent.createTest(name);
+
+		scenario.set(testcase);
+
 	}
-	
-	
+
 	public void configuretestname() {
-        // This method can read the shared variable directly
-        System.out.println("Configuring environment for: " + this.casename);
-    }
-	
-	
-	
-	public void onTestFailure(String test) throws IOException {
-		
-	    File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-	    
-	    File destinationFile = new File("C:/Users/IVAN DARRELL/eclipse-workspace/MyCreation/report/my_screenshot.png");
-	    
-	    FileUtils.copyFile(screenshot, destinationFile);
-
+		// This method can read the shared variable directly
+		System.out.println("Configuring environment for: " + this.casename);
 	}
-	
-	
-	 public static String getBase64Screenshot(WebDriver driver) {
-	        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
-	    }
-	 
-	 
-	
-	
-	 
-	 
-	 
-	 
-	
+
+	public static String getBase64Screenshot(WebDriver driver) {
+		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+	}
+
+	public static ExtentTest getScenario() {
+
+		ExtentTest test = scenario.get();
+
+		if (test == null) {
+			throw new IllegalStateException("ExtentTest has not been created for this thread.");
+		}
+
+		return test;
+	}
+
+	public static ExtentReports getReport() {
+
+		ExtentReports extent = report.get();
+
+		if (extent == null) {
+			throw new IllegalStateException("ExtentReports has not been initialized for this thread.");
+		}
+
+		return extent;
+	}
+
+	public static void flushReport() {
+
+		ExtentReports extent = report.get();
+
+		if (extent != null) {
+			extent.flush();
+			report.remove();
+		}
+
+		scenario.remove();
+	}
+
+	public void onTestFailure(String test) throws IOException {
+
+		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+		String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss-SSS").format(new Date());
+
+		File destinationFile = new File("C:/Users/IVAN DARRELL/eclipse-workspace/" + "E-commerce project/report/"
+				+ "screenshot_" + timeStamp + ".png");
+
+		FileUtils.copyFile(screenshot, destinationFile);
+	}
+
 }

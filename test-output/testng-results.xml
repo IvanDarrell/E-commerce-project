@@ -1,29 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-09-06T11:44:07 PST" name="Suite" finished-at="2026-09-06T11:44:41 PST" duration-ms="33980">
+  <suite started-at="2026-09-15T09:48:29 PST" name="Suite" finished-at="2026-09-15T09:49:03 PST" duration-ms="33923">
     <groups>
     </groups>
-    <test started-at="2026-09-06T11:44:07 PST" name="Test" finished-at="2026-09-06T11:44:41 PST" duration-ms="33980">
+    <test started-at="2026-09-15T09:48:29 PST" name="User workflow 1" finished-at="2026-09-15T09:49:03 PST" duration-ms="33591">
       <class name="Creation.EcommerceTest">
-        <test-method is-config="true" signature="logger()[pri:0, instance:Creation.EcommerceTest@d23e042]" started-at="2026-09-06T11:44:07 PST" name="logger" finished-at="2026-09-06T11:44:08 PST" duration-ms="178" status="PASS">
+        <test-method is-config="true" signature="logger(org.testng.ITestContext)[pri:0, instance:Creation.EcommerceTest@5dafbe45]" started-at="2026-09-15T09:48:29 PST" name="logger" finished-at="2026-09-15T09:48:29 PST" duration-ms="207" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@27e47833]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logger -->
-        <test-method is-config="true" signature="test()[pri:0, instance:Creation.EcommerceTest@d23e042]" started-at="2026-09-06T11:44:08 PST" name="test" finished-at="2026-09-06T11:44:09 PST" duration-ms="1391" status="PASS">
+        <test-method is-config="true" signature="test(java.lang.String)[pri:0, instance:Creation.EcommerceTest@5dafbe45]" started-at="2026-09-15T09:48:29 PST" name="test" finished-at="2026-09-15T09:48:31 PST" duration-ms="1771" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method signature="usertest()[pri:0, instance:Creation.EcommerceTest@d23e042]" started-at="2026-09-06T11:44:09 PST" name="usertest" finished-at="2026-09-06T11:44:41 PST" duration-ms="32175" status="PASS">
+        <test-method signature="usertest()[pri:0, instance:Creation.EcommerceTest@5dafbe45]" started-at="2026-09-15T09:48:31 PST" name="usertest" finished-at="2026-09-15T09:49:00 PST" duration-ms="29299" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- usertest -->
-        <test-method is-config="true" signature="flush()[pri:0, instance:Creation.EcommerceTest@d23e042]" started-at="2026-09-06T11:44:41 PST" name="flush" finished-at="2026-09-06T11:44:41 PST" duration-ms="207" status="PASS">
+        <test-method is-config="true" signature="shutdownbrowser()[pri:0, instance:Creation.EcommerceTest@5dafbe45]" started-at="2026-09-15T09:49:00 PST" name="shutdownbrowser" finished-at="2026-09-15T09:49:01 PST" duration-ms="1034" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- flush -->
+        </test-method> <!-- shutdownbrowser -->
+        <test-method is-config="true" signature="closeReport()[pri:0, instance:Creation.EcommerceTest@5dafbe45]" started-at="2026-09-15T09:49:01 PST" name="closeReport" finished-at="2026-09-15T09:49:03 PST" duration-ms="1213" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeReport -->
       </class> <!-- Creation.EcommerceTest -->
-    </test> <!-- Test -->
+    </test> <!-- User workflow 1 -->
+    <test started-at="2026-09-15T09:48:29 PST" name="User workflow 2" finished-at="2026-09-15T09:49:03 PST" duration-ms="33589">
+      <class name="Creation.EcommerceTest">
+        <test-method is-config="true" signature="logger(org.testng.ITestContext)[pri:0, instance:Creation.EcommerceTest@7975d1d8]" started-at="2026-09-15T09:48:29 PST" name="logger" finished-at="2026-09-15T09:48:29 PST" duration-ms="207" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@6f6745d6]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logger -->
+        <test-method is-config="true" signature="test(java.lang.String)[pri:0, instance:Creation.EcommerceTest@7975d1d8]" started-at="2026-09-15T09:48:29 PST" name="test" finished-at="2026-09-15T09:48:31 PST" duration-ms="1771" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[edge]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method signature="usertest()[pri:0, instance:Creation.EcommerceTest@7975d1d8]" started-at="2026-09-15T09:48:31 PST" name="usertest" finished-at="2026-09-15T09:49:02 PST" duration-ms="31101" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- usertest -->
+        <test-method is-config="true" signature="shutdownbrowser()[pri:0, instance:Creation.EcommerceTest@7975d1d8]" started-at="2026-09-15T09:49:02 PST" name="shutdownbrowser" finished-at="2026-09-15T09:49:02 PST" duration-ms="304" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shutdownbrowser -->
+        <test-method is-config="true" signature="closeReport()[pri:0, instance:Creation.EcommerceTest@7975d1d8]" started-at="2026-09-15T09:49:02 PST" name="closeReport" finished-at="2026-09-15T09:49:03 PST" duration-ms="145" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeReport -->
+      </class> <!-- Creation.EcommerceTest -->
+    </test> <!-- User workflow 2 -->
+    <test started-at="2026-09-15T09:48:29 PST" name="User workflow 3" finished-at="2026-09-15T09:49:03 PST" duration-ms="33923">
+      <class name="Creation.EcommerceTest">
+        <test-method is-config="true" signature="logger(org.testng.ITestContext)[pri:0, instance:Creation.EcommerceTest@24105dc5]" started-at="2026-09-15T09:48:29 PST" name="logger" finished-at="2026-09-15T09:48:29 PST" duration-ms="208" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@27508c5d]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logger -->
+        <test-method is-config="true" signature="test(java.lang.String)[pri:0, instance:Creation.EcommerceTest@24105dc5]" started-at="2026-09-15T09:48:29 PST" name="test" finished-at="2026-09-15T09:48:34 PST" duration-ms="4335" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method signature="usertest()[pri:0, instance:Creation.EcommerceTest@24105dc5]" started-at="2026-09-15T09:48:34 PST" name="usertest" finished-at="2026-09-15T09:49:02 PST" duration-ms="28156" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- usertest -->
+        <test-method is-config="true" signature="shutdownbrowser()[pri:0, instance:Creation.EcommerceTest@24105dc5]" started-at="2026-09-15T09:49:02 PST" name="shutdownbrowser" finished-at="2026-09-15T09:49:03 PST" duration-ms="1111" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shutdownbrowser -->
+        <test-method is-config="true" signature="closeReport()[pri:0, instance:Creation.EcommerceTest@24105dc5]" started-at="2026-09-15T09:49:03 PST" name="closeReport" finished-at="2026-09-15T09:49:03 PST" duration-ms="53" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeReport -->
+      </class> <!-- Creation.EcommerceTest -->
+    </test> <!-- User workflow 3 -->
   </suite> <!-- Suite -->
 </testng-results>

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+<suite thread-count="3" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="3" parallel="tests" name="User workflow 3(failed)">
+    <parameter name="browser" value="firefox"/>
     <classes>
       <class name="Creation.EcommerceTest">
         <methods>
+          <include name="closeReport"/>
           <include name="logger"/>
+          <include name="shutdownbrowser"/>
           <include name="usertest"/>
           <include name="test"/>
-          <include name="flush"/>
         </methods>
       </class> <!-- Creation.EcommerceTest -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- User workflow 3(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -27,6 +28,7 @@ import Utilities.Page;
 import Utilities.jsonReader;
 import io.reactivex.rxjava3.functions.Action;
 import org.testng.ITestResult;
+import org.testng.ITestContext;
 
 public class Main {
 
@@ -46,22 +48,24 @@ public class Main {
     protected Handler handle;
 
  
-	@BeforeTest
-	public void logger() throws NoSuchFieldException, SecurityException {
+ 
+    
+    @BeforeTest
+    public void logger(ITestContext context) {
 
-		log.initializereport();
-		
-		
-		
-	}
+        String testName = context.getCurrentXmlTest().getName();
+
+        Extentlogger.initializereport(testName);
+    }
 	
 	
 
 	@BeforeMethod
-	public void test () {
+	@Parameters("browser")
+	public void test (String browserName) {
 		browser = new Browsers();
 
-        driver = Browsers.set("chrome");
+        driver = browser.set(browserName);
         
         System.out.println("Driver = " + driver);
 
@@ -100,14 +104,16 @@ public class Main {
 
 	@AfterMethod
 
-	public void flush() {
+	public void shutdownbrowser() {
 		
-		log.report.flush();
-		
-		//driver.close();
-		
+		driver.quit();
 	}
 	
+	
+	@AfterTest
+	public void closeReport() {
+	    Extentlogger.flushReport();
+	}
 	
 
 }

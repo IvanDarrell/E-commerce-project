@@ -59,12 +59,12 @@ public class Handler {
 			
 			
 			
-			log.scenario.pass("Successfully switched frame");
+			log.getScenario().pass("Successfully switched frame");
 			
 			
 		} catch (Exception e){
 			
-			log.scenario.fail("Unsuccessfull switching of frame");
+			log.getScenario().fail("Unsuccessfull switching of frame");
 	
 		}
 		
@@ -84,17 +84,17 @@ public class Handler {
 		 if (tabs.size() != 0) {
 		 driver.switchTo().window(tabs.get(number));
 		 
-			log.scenario.pass("Successfully switched tab");
+			log.getScenario().pass("Successfully switched tab");
 			
 		 } else {
 			 
-			 log.scenario.fail("Unsuccessfull switching of tab"); 
+			 log.getScenario().fail("Unsuccessfull switching of tab"); 
 			 
 			 
 		 }
 		} catch (Exception e){
 			
-			log.scenario.fail("Invalid tab");
+			log.getScenario().fail("Invalid tab");
 	
 		}
 		
@@ -120,7 +120,7 @@ public class Handler {
 			
 		} catch (Exception e){
 			
-			log.scenario.fail("Unsuccessfull switching of frame");
+			log.getScenario().fail("Unsuccessfull switching of frame");
 	
 		}
 		

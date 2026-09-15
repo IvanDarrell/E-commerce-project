@@ -67,7 +67,7 @@ public class Actionspage {
 			element.click();
 			
 			
-			log.scenario.pass("Successfully clicked the element " + element);
+			log.getScenario().pass("Successfully clicked the element " + element);
 			
 			System.out.println("Successfully clicked the element " + element);
 			
@@ -75,20 +75,20 @@ public class Actionspage {
 		} catch (NoSuchElementException e) {
 			
 			System.out.println("Element " + element +  " is not existing.");
-			log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			return false;
 		}  catch (ElementClickInterceptedException e) {
 			 System.out.println("Element " + element +  " is blocked by another element");
-		    log.scenario.fail("Element " + element +" is blocked by another element" , MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +" is blocked by another element" , MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (StaleElementReferenceException e) {
 			
 		    System.out.println("Element " + element +  " became stale.");
-		    log.scenario.fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (TimeoutException e) {
 		    System.out.println("Element " + element + " did not appear in time.");
-		    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		}
 		
@@ -111,7 +111,7 @@ public class Actionspage {
 		
 		
 		
-		log.scenario.pass("Hover to element is " + element +" success");	
+		log.getScenario().pass("Hover to element is " + element +" success");	
 		System.out.println("Hover to element is " + element +" success");
 			
 		return true;	
@@ -120,15 +120,15 @@ public class Actionspage {
 			
 			System.out.println("Element " + element +  " is not existing.");
 			
-			log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			 return false;
 		} catch (StaleElementReferenceException e) {
 		    System.out.println("Element " + element +  " became stale.");
-		    log.scenario.fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (TimeoutException e) {
 		    System.out.println("Element " + element + " did not appear in time.");
-		    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		}
 		
@@ -147,7 +147,7 @@ public class Actionspage {
 
 	        wait.until(ExpectedConditions.visibilityOf(element));
 
-	        log.scenario.pass("Element " + element + " is displayed");
+	        log.getScenario().pass("Element " + element + " is displayed");
 
 	        return true;
 
@@ -155,7 +155,7 @@ public class Actionspage {
 
 	        System.out.println("Element " + element + " is not existing.");
 
-	        log.scenario.fail(
+	        log.getScenario().fail(
 	                "Element " + element + " is not existing",
 	                MediaEntityBuilder
 	                        .createScreenCaptureFromBase64String(
@@ -169,7 +169,7 @@ public class Actionspage {
 
 	        System.out.println("Element " + element + " did not appear in time.");
 
-	        log.scenario.fail(
+	        log.getScenario().fail(
 	                "Element " + element + " did not appear in time.",
 	                MediaEntityBuilder
 	                        .createScreenCaptureFromBase64String(
@@ -193,7 +193,7 @@ public class Actionspage {
 		
 		wait.until(ExpectedConditions.visibilityOf(element));
 		
-		log.scenario.pass("Successful Fluent Wait for Element" + element +" is displayed");		
+		log.getScenario().pass("Successful Fluent Wait for Element" + element +" is displayed");		
 		
 		System.out.println("Successful Fluent Wait for Element" + element +" is displayed");
 		
@@ -201,11 +201,11 @@ public class Actionspage {
 		} catch (NoSuchElementException e) {
 			
 			System.out.println("Element " + element +  " is not existing.");
-			log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			return false;
 		} catch (TimeoutException e) {
 		    System.out.println("Element " + element + " did not appear in time.");
-		    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		}
 	}
@@ -244,11 +244,11 @@ public class Actionspage {
 				
 				
 				}
-				log.scenario.pass("Expected values are correct");
+				log.getScenario().pass("Expected values are correct");
 			
 			} else {
 				
-				log.scenario.fail("Expected values are incorrect with currentvalues");
+				log.getScenario().fail("Expected values are incorrect with currentvalues");
 				
 			}
 			
@@ -257,22 +257,22 @@ public class Actionspage {
 				
 				System.out.println("Element " + element +  " is not existing.");
 
-				log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+				log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 				
 			}  catch (ElementClickInterceptedException e) {
 				
 			    System.out.println("Element " + element +  " was blocked by another element.");
 
-			    log.scenario.fail("Element " + element +" is blocked by another element" , MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			    log.getScenario().fail("Element " + element +" is blocked by another element" , MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 
 			} catch (StaleElementReferenceException e) {
 			    System.out.println("Element " + element +  " became stale.");
 	
-			    log.scenario.fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			    log.getScenario().fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 
 			} catch (TimeoutException e) {
 			    System.out.println("Element " + element + " did not appear in time.");
-			    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			}
 		
 	}
@@ -294,22 +294,22 @@ public class Actionspage {
 			element.sendKeys(string);
 			//element.sendKeys(Keys.ENTER);
 			System.out.println("Entered text to " + element);
-			log.scenario.pass("Entered text to " + element);
+			log.getScenario().pass("Entered text to " + element);
 			
 			return true;
 		}catch (NoSuchElementException e) {
 			
 			System.out.println("Element " + element +  " is not existing.");
 
-			log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			return false;
 		}  catch (StaleElementReferenceException e) {
 		    System.out.println("Element " + element +  " became stale.");
-		    log.scenario.fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (TimeoutException e) {
 		    System.out.println("Element " + element + " did not appear in time.");
-		    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		}
 		
@@ -323,7 +323,7 @@ public class Actionspage {
 		
 		Thread.sleep(6000);
 		System.out.println("Waiting success");
-		log.scenario.pass("Waiting success");
+		log.getScenario().pass("Waiting success");
 		
 		
 		
@@ -341,14 +341,14 @@ public class Actionspage {
 				
 				System.out.println("Input Data value is the same as the expected value " + " Current value : " + element.getText().trim() + " Expected Value " + expectedValue );
 				
-				log.scenario.pass("Input Data value is the same as the expected value " + " Current value : " + element.getText().trim() + " Expected Value " + expectedValue );
+				log.getScenario().pass("Input Data value is the same as the expected value " + " Current value : " + element.getText().trim() + " Expected Value " + expectedValue );
 				return true;
 				
 			} else {
 				
 				
 				System.out.println("Input Data value is NOT the same as the expected value " + " Current value : " + element.getText().trim() + " Expected Value " + expectedValue );
-				log.scenario.fail("Input Data value is NOT the same as the expected value " + " Current value : " + element.getText().trim() + " Expected Value " + expectedValue );
+				log.getScenario().fail("Input Data value is NOT the same as the expected value " + " Current value : " + element.getText().trim() + " Expected Value " + expectedValue );
 				
 				return false;
 			}
@@ -360,19 +360,19 @@ public class Actionspage {
 			
 			System.out.println("Element " + element +  " is not existing.");
 	
-			log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			
 			return false;
 			
 		}   catch (StaleElementReferenceException e) {
 		    System.out.println("Element " + element +  " became stale.");
 
-		    log.scenario.fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		    
 		} catch (TimeoutException e) {
 		    System.out.println("Element " + element + " did not appear in time.");
-		    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		}
 		
@@ -387,20 +387,20 @@ public class Actionspage {
 			if (driver.getCurrentUrl().contains(url)) {
 				
 				
-				log.scenario.pass("URL is the same Expected : " +  url + ", Current URL " + driver.getCurrentUrl());
+				log.getScenario().pass("URL is the same Expected : " +  url + ", Current URL " + driver.getCurrentUrl());
 				return true;
 			}
 			
 			else {
 				
-				log.scenario.fail("URL not the same Expected : " +  url + ", Current URL " + driver.getCurrentUrl() ,MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());	
+				log.getScenario().fail("URL not the same Expected : " +  url + ", Current URL " + driver.getCurrentUrl() ,MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());	
 			
 				return false;
 			}
 			
 		} catch (Exception e) {
 			
-			log.scenario.fail("Browser incorrect",MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());	
+			log.getScenario().fail("Browser incorrect",MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());	
 			return false;
 			
 			
@@ -428,22 +428,22 @@ public class Actionspage {
 			
 			System.out.println("Element " + element +  " is not existing.");
 
-			log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			return false;
 		}  catch (ElementClickInterceptedException e) {
 			
 		    System.out.println("Element " + element +  " was blocked by another element.");
 
-		    log.scenario.fail("Element " + element +" is blocked by another element" , MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +" is blocked by another element" , MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (StaleElementReferenceException e) {
 		    System.out.println("Element " + element +  " became stale.");
 		    
-		    log.scenario.fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (TimeoutException e) {
 		    System.out.println("Element " + element + " did not appear in time.");
-		    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		}
 		
@@ -462,7 +462,7 @@ public class Actionspage {
 		
 			 
 			 js.executeScript("arguments[0].click();", element);
-			 log.scenario.pass("Element successfully clicked");
+			 log.getScenario().pass("Element successfully clicked");
 			 
 		
 		
@@ -472,22 +472,22 @@ public class Actionspage {
 			
 			System.out.println("Element " + element +  " is not existing.");
 		
-			log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			return false;
 		}  catch (ElementClickInterceptedException e) {
 			
 		    System.out.println("Element " + element +  " was blocked by another element.");
 		 
-		    log.scenario.fail("Element " + element +" is blocked by another element" , MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +" is blocked by another element" , MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (StaleElementReferenceException e) {
 		    System.out.println("Element " + element +  " became stale.");
 	
-		    log.scenario.fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (TimeoutException e) {
 		    System.out.println("Element " + element + " did not appear in time.");
-		    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		
 		    return false;
 		}
@@ -511,7 +511,7 @@ public class Actionspage {
 			
 			dropdown.selectByValue(value);
 			
-			log.scenario.pass(value + " is selected in Dropdown " + element);
+			log.getScenario().pass(value + " is selected in Dropdown " + element);
 			
 			
 			return true;
@@ -520,15 +520,15 @@ public class Actionspage {
 			
 			System.out.println("Element " + element +  " is not existing.");
 			
-			log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			return false;
 		}  catch (StaleElementReferenceException e) {
 		    System.out.println("Element " + element +  " became stale.");
-		    log.scenario.fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (TimeoutException e) {
 		    System.out.println("Element " + element + " did not appear in time.");
-		    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		}
 		
@@ -553,7 +553,7 @@ public class Actionspage {
 			
 			dropdown.selectByVisibleText(value);
 			
-			log.scenario.pass(value + " is selected in Dropdown " + element);
+			log.getScenario().pass(value + " is selected in Dropdown " + element);
 			
 			return true;
 			
@@ -561,15 +561,15 @@ public class Actionspage {
 			
 			System.out.println("Element " + element +  " is not existing.");
 			
-			log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			return false;
 		}  catch (StaleElementReferenceException e) {
 		    System.out.println("Element " + element +  " became stale.");
-		    log.scenario.fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (TimeoutException e) {
 		    System.out.println("Element " + element + " did not appear in time.");
-		    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 			}
 		
@@ -619,12 +619,12 @@ public class Actionspage {
 			
 			clickbyjava(valueclicker);
 			
-			log.scenario.pass(value + " is selected in the Input " + element);
+			log.getScenario().pass(value + " is selected in the Input " + element);
 			return true;
 			} else {
 				
 				
-			log.scenario.fail(value + " failed to be selected in Input " + element);
+			log.getScenario().fail(value + " failed to be selected in Input " + element);
 				
 			return false;
 				
@@ -638,15 +638,15 @@ public class Actionspage {
 			
 			System.out.println("Element " + element +  " is not existing.");
 			
-			log.scenario.fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+			log.getScenario().fail("Element " + element + " is not existing", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 			return false;	
 		}  catch (StaleElementReferenceException e) {
 		    System.out.println("Element " + element +  " became stale.");
-		    log.scenario.fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element +  " became stale.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		} catch (TimeoutException e) {
 		    System.out.println("Element " + element + " did not appear in time.");
-		    log.scenario.fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
+		    log.getScenario().fail("Element " + element + " did not appear in time.", MediaEntityBuilder.createScreenCaptureFromBase64String(Extentlogger.getBase64Screenshot(driver)).build());
 		    return false;
 		}
 		
