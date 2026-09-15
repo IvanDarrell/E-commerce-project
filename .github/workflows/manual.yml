@@ -1,0 +1,85 @@
+name: Selenium TestNG Tests
+
+
+on: 
+  workflow_dispatch:
+
+
+jobs:
+  selenium-test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: ecommerce
+        ports:
+          - "3306:3306"
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    steps:  
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with: 
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            if mysqladmin ping -h 127.0.0.1 -P 3306 -u root -proot --silent; then
+              echo "MySQL is ready"
+              break
+            fi
+
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
+      - name: Import ecommerce database
+        run: |
+          mysql -h 127.0.0.1 -P 3306 -u root -proot ecommerce < ecommerce.sql    
+
+      - name: Inspect Maven compiler
+        run: |
+          mvn help:effective-pom -Doutput=effective-pom.xml
+          grep -i -C 10 "maven-compiler-plugin" effective-pom.xml || true
+          grep -i -C 10 "lombok" effective-pom.xml || true
+      - name: Debug Maven environment
+        run: |
+          java -version
+          mvn -version
+          echo "=== Lombok dependency ==="
+          mvn dependency:tree -Dincludes=org.projectlombok:lombok
+          echo "=== Effective POM ==="
+          mvn help:effective-pom -Doutput=effective-pom.xml
+          grep -i -C 5 lombok effective-pom.xml || true
+      - name: Run TestNG suite
+        env:
+          DB_URL: jdbc:mysql://127.0.0.1:3306/ecommerce
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: |
+          mvn clean test -Dsurefire.suiteXmlFiles=testng.xml
+      - name: Upload Extent Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-report
+          path: target/report/
+
+
+      - name: Upload TestNG Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: testng-report
+          path: target/surefire-reports/    
+          

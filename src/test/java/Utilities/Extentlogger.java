@@ -45,7 +45,17 @@ public class Extentlogger {
 
 	public static synchronized void initializereport(String testName) {
 
+<<<<<<< HEAD
 		String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss-SSS").format(new Date());
+=======
+        // Specify the location of the report
+		String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+		 String reportPath = "target/report/Regression " + timeStamp + ".html";
+
+		ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
+       
+        spark.config().setTheme(Theme.DARK);
+>>>>>>> branch 'master' of https://github.com/IvanDarrell/E-commerce-project.git
 
 		// Make the TestNG test name safe for a Windows filename
 		String safeTestName = testName.replaceAll("[\\\\/:*?\"<>|]", "_");
@@ -85,6 +95,7 @@ public class Extentlogger {
 		// This method can read the shared variable directly
 		System.out.println("Configuring environment for: " + this.casename);
 	}
+<<<<<<< HEAD
 
 	public static String getBase64Screenshot(WebDriver driver) {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
@@ -137,3 +148,20 @@ public class Extentlogger {
 	}
 
 }
+=======
+	
+	
+	 public static String getBase64Screenshot(WebDriver driver) {
+	        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+	    }
+	 
+	 
+	
+	
+	 
+	 
+	 
+	 
+	
+}
+>>>>>>> branch 'master' of https://github.com/IvanDarrell/E-commerce-project.git

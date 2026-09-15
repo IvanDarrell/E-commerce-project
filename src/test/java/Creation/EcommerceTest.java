@@ -41,6 +41,10 @@ import Utilities.Handler;
 import Utilities.Page;
 import Utilities.jsonReader;
 import io.reactivex.rxjava3.functions.Action;
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/IvanDarrell/E-commerce-project.git
 
 public class EcommerceTest extends Main{
 	
