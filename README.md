@@ -8,8 +8,25 @@ Customer can add, edit, and remove items in the cart. The automation checks the 
 - Navigate pages
 - Login
 - Add,Edit,Remove items
+
+## 🔧 Technical Features
+- TestNG Framework
+- POM Pattern
+- Exception Handling
+- Hard/Soft Assert
 - Extent Report
-   
+- Extent Report Thread
+- JSON Data Reading
+- Database connection
+- Cross-Browser Testing :
+  Google Chrome
+  Edge
+  Mozilla FireFox
+- Parallel Testing (Selenium Grid)
+- Docker Compose-based browser infrastructure
+- Logging and screenshots on failure
+- GitHub Actions CI/CD integration  
+
 
 ## 📦 Installation
 - Download the file
