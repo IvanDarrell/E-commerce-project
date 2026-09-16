@@ -173,14 +173,6 @@ For local execution, configure the appropriate data source:
 
 The database connection and credentials should be configured through environment-specific settings. Do not commit private credentials or production database information to the repository.
 
-## 🔮 Future Enhancements
-
-* REST Assured API automation integration
-* Accessibility testing
-* Appium mobile automation
-* Additional CI quality gates
-* Expanded test-suite grouping and reporting
-
 ## 👤 Author
 
 **Ivan Darrell V. Colina**
